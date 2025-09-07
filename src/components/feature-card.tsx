@@ -34,8 +34,8 @@ export function FeatureCard({
     >
       <Card className="h-full p-6 transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-mars-500/20">
         <div className="flex flex-col items-center text-center space-y-4">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-mars-500/20 to-mars-600/10 group-hover:from-mars-400/30 group-hover:to-mars-500/20 transition-all duration-300">
-            <Icon className="h-8 w-8 text-mars-400 group-hover:text-mars-300 transition-colors duration-300" />
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-mars-500/20 to-mars-600/10 group-hover:from-mars-500/30 group-hover:to-mars-500/20 transition-all duration-300">
+            <Icon className="h-8 w-8 text-mars-500 group-hover:text-mars-300 transition-colors duration-300" />
           </div>
           
           <div className="space-y-2">

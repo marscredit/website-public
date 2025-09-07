@@ -20,12 +20,15 @@ export const network = {
 export const links = {
   github: "https://github.com/marscredit",
   docs: "https://docs.marscredit.org",
-  discord: "https://discord.gg/marscredit",
-  twitter: "https://twitter.com/marscredit",
-  blockscan: "https://explorer.marscredit.org",
-  bridge: "https://bridge.marscredit.org",
-  grants: "https://grants.marscredit.org",
+  discord: "https://discord.gg/57bg77dCV8",
+  twitter: "https://x.com/marscredit",
+  telegram: "https://t.me/marscreditxyz",
+  blockscan: "https://blockscan.marscredit.xyz/",
+  bridge: "https://defi.marscredit.xyz/bridge",
+  grants: "https://defi.marscredit.xyz/grants",
   mining: "https://github.com/marscredit/mining-app",
-  trade: "https://www.geckoterminal.com/solana/pools/mars-credit",
+  trade: "https://www.geckoterminal.com/solana/pools/6xqVAuh2gyBDrs3x2KTQcEkWAmDeHxif2AMUZRGe9w5k",
+  rpc: "https://rpc.marscredit.xyz/",
+  whitepaper: "/media/6801abc67810b757a599364a_Mars%20Credit%20-%20Whitepaper.pdf.pdf",
 } as const
 

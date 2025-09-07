@@ -9,14 +9,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Mars-themed color palette
+        // Mars-themed color palette - Brand Red #EA3323
         mars: {
-          50: '#ffd2a1',
-          100: '#ffd2a1',
-          200: '#ff8a4d',
-          300: '#ff6a3d',
-          400: '#ff512f',
-          500: '#bb2d1b',
+          50: '#fef2f2',
+          100: '#fcc2bb',
+          200: '#f66849',
+          300: '#f04d36',
+          400: '#EA3323',
+          500: '#EA3323',
           600: '#8b1d1d',
           700: '#611616',
           800: '#3b0e0e',
@@ -57,8 +57,8 @@ module.exports = {
         },
       },
       backgroundImage: {
-        'orbit': 'radial-gradient(120% 120% at 10% 10%, rgba(255,81,47,.25), transparent 60%), radial-gradient(120% 120% at 90% 90%, rgba(255,138,77,.2), transparent 55%), linear-gradient(180deg, #121218 0%, #0b0b0e 100%)',
-        'mars': 'conic-gradient(from 220deg at 50% 50%, #ff512f, #ff8a4d, #bb2d1b, #2a0909 75%, #121218 100%)',
+        'orbit': 'radial-gradient(120% 120% at 10% 10%, rgba(234,51,35,.25), transparent 60%), radial-gradient(120% 120% at 90% 90%, rgba(246,104,73,.2), transparent 55%), linear-gradient(180deg, #121218 0%, #0b0b0e 100%)',
+        'mars': 'conic-gradient(from 220deg at 50% 50%, #EA3323, #f66849, #EA3323, #2a0909 75%, #121218 100%)',
       },
     },
   },

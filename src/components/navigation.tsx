@@ -2,11 +2,12 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { links } from "@/lib/config"
 import { cn } from "@/lib/utils"
-import { ExternalLink, Github, BookOpen, Zap, ArrowRightLeft, DollarSign } from "lucide-react"
+import { ExternalLink, Github, ArrowRightLeft, DollarSign } from "lucide-react"
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -19,7 +20,6 @@ const navigation = [
 
 const actionButtons = [
   { name: "Buy $MARS", href: links.trade, icon: DollarSign, variant: "outline" as const },
-  { name: "Docs", href: links.docs, icon: BookOpen, variant: "ghost" as const },
   { name: "GitHub", href: links.github, icon: Github, variant: "ghost" as const },
 ]
 
@@ -47,11 +47,15 @@ export function Navigation() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="mars-orb h-8 w-8 rounded-full"></div>
-            <span className="font-display text-xl font-bold text-text-hi">
-              Mars Credit
-            </span>
+          <Link href="/" className="flex items-center space-x-3">
+            <Image
+              src="/brand/marscredit_wide_transparent-p-500.png"
+              alt="Mars Credit"
+              width={160}
+              height={32}
+              className="h-8 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Navigation } from "@/components/navigation"
 import { MarsOrb } from "@/components/mars-orb"
@@ -13,7 +14,8 @@ import {
   Globe, 
   Shield,
   ArrowRight,
-  ExternalLink
+  ExternalLink,
+  MessageCircle
 } from "lucide-react"
 
 const timeline = [
@@ -336,7 +338,13 @@ export default function StoryPage() {
                 <Button variant="outline" size="lg" asChild>
                   <a href={links.discord} target="_blank" rel="noopener noreferrer">
                     <Users className="mr-2 h-5 w-5" />
-                    Join Community
+                    Join Discord
+                  </a>
+                </Button>
+                <Button variant="outline" size="lg" asChild>
+                  <a href={links.telegram} target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="mr-2 h-5 w-5" />
+                    Join Telegram
                   </a>
                 </Button>
                 <Button variant="ghost" size="lg" asChild>
@@ -355,9 +363,14 @@ export default function StoryPage() {
       <footer className="border-t border-white/5 py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="mars-orb h-6 w-6 rounded-full"></div>
-              <span className="font-display font-bold text-text-hi">Mars Credit</span>
+            <div className="flex items-center space-x-3 mb-4 md:mb-0">
+              <Image
+                src="/brand/marscredit_wide_transparent-p-500.png"
+                alt="Mars Credit"
+                width={120}
+                height={24}
+                className="h-6 w-auto"
+              />
               <span className="text-xs bg-mars-500/20 text-mars-300 px-2 py-1 rounded-full">
                 Open Source
               </span>

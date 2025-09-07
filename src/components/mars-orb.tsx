@@ -31,7 +31,7 @@ export function MarsOrb({ className, size = "lg" }: MarsOrbProps) {
         }}
       >
         {/* Inner glow effect */}
-        <div className="absolute inset-2 rounded-full bg-gradient-to-br from-mars-400/30 to-transparent" />
+        <div className="absolute inset-2 rounded-full bg-gradient-to-br from-mars-500/30 to-transparent" />
         
         {/* Surface details */}
         <div className="absolute inset-0 rounded-full">
@@ -41,12 +41,12 @@ export function MarsOrb({ className, size = "lg" }: MarsOrbProps) {
         </div>
         
         {/* Atmospheric glow */}
-        <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-mars-400/20 to-mars-300/10 blur-sm" />
+        <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-mars-500/20 to-mars-300/10 blur-sm" />
       </motion.div>
       
       {/* Orbital particles */}
       <motion.div
-        className="absolute inset-0 rounded-full border border-mars-400/20"
+        className="absolute inset-0 rounded-full border border-mars-500/20"
         style={{ padding: size === 'xl' ? '2rem' : '1rem' }}
         animate={{ rotate: -360 }}
         transition={{
@@ -55,8 +55,8 @@ export function MarsOrb({ className, size = "lg" }: MarsOrbProps) {
           ease: "linear",
         }}
       >
-        <div className="absolute top-0 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-mars-300 opacity-60" />
-        <div className="absolute bottom-0 right-1/2 h-0.5 w-0.5 translate-x-1/2 rounded-full bg-mars-200 opacity-40" />
+        <div className="absolute top-0 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-mars-500 opacity-60" />
+        <div className="absolute bottom-0 right-1/2 h-0.5 w-0.5 translate-x-1/2 rounded-full bg-mars-300 opacity-40" />
       </motion.div>
     </div>
   )

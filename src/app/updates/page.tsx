@@ -1,11 +1,13 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Navigation } from "@/components/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { formatDate } from "@/lib/utils"
+import { links } from "@/lib/config"
 import { CalendarDays, Clock, ArrowRight, Zap } from "lucide-react"
 
 // Mock data for now - in a real app this would come from MDX files or a CMS
@@ -205,17 +207,17 @@ export default function UpdatesPage() {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Button size="lg" asChild>
-                  <a href="https://discord.gg/marscredit" target="_blank" rel="noopener noreferrer">
+                  <a href={links.discord} target="_blank" rel="noopener noreferrer">
                     Join Discord
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <a href="https://twitter.com/marscredit" target="_blank" rel="noopener noreferrer">
+                  <a href={links.twitter} target="_blank" rel="noopener noreferrer">
                     Follow on X
                   </a>
                 </Button>
                 <Button variant="ghost" size="lg" asChild>
-                  <a href="https://github.com/marscredit" target="_blank" rel="noopener noreferrer">
+                  <a href={links.github} target="_blank" rel="noopener noreferrer">
                     Watch on GitHub
                   </a>
                 </Button>
@@ -229,9 +231,14 @@ export default function UpdatesPage() {
       <footer className="border-t border-white/5 py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="mars-orb h-6 w-6 rounded-full"></div>
-              <span className="font-display font-bold text-text-hi">Mars Credit</span>
+            <div className="flex items-center space-x-3 mb-4 md:mb-0">
+              <Image
+                src="/brand/marscredit_wide_transparent-p-500.png"
+                alt="Mars Credit"
+                width={120}
+                height={24}
+                className="h-6 w-auto"
+              />
               <span className="text-xs bg-mars-500/20 text-mars-300 px-2 py-1 rounded-full">
                 Open Source
               </span>
