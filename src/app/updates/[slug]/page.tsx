@@ -126,13 +126,14 @@ const tagColors: Record<string, string> = {
 }
 
 interface UpdatePageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
-export default function UpdatePage({ params }: UpdatePageProps) {
-  const update = updates[params.slug]
+export default async function UpdatePage({ params }: UpdatePageProps) {
+  const { slug } = await params
+  const update = updates[slug]
   
   if (!update) {
     notFound()
@@ -221,7 +222,7 @@ export default function UpdatePage({ params }: UpdatePageProps) {
               <div className="flex space-x-2">
                 <Button variant="ghost" size="sm" asChild>
                   <a 
-                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Check out: ${update.title}`)}&url=${encodeURIComponent(`https://marscredit.org/updates/${params.slug}`)}`}
+                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Check out: ${update.title}`)}&url=${encodeURIComponent(`https://marscredit.org/updates/${slug}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

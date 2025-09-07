@@ -14,7 +14,7 @@ import {
   Pickaxe,
   ExternalLink,
   Download,
-  Bridge,
+  ArrowRightLeft,
   Users,
   TrendingUp,
   Globe
@@ -55,7 +55,7 @@ const ecosystemLinks = [
   { name: "GitHub", href: links.github, icon: Code },
   { name: "Docs", href: links.docs, icon: ExternalLink },
   { name: "Blockscan", href: links.blockscan, icon: ExternalLink },
-  { name: "Bridge", href: links.bridge, icon: Bridge },
+  { name: "Bridge", href: links.bridge, icon: ArrowRightLeft },
   { name: "Mining App", href: links.mining, icon: Download },
 ]
 
@@ -234,7 +234,7 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Bridge className="h-16 w-16 text-mars-400 mx-auto mb-6" />
+              <ArrowRightLeft className="h-16 w-16 text-mars-400 mx-auto mb-6" />
               <h2 className="text-3xl sm:text-4xl font-display font-bold text-text-hi mb-6">
                 Buy or Sell MARS on Solana
               </h2>
@@ -252,7 +252,7 @@ export default function HomePage() {
                 </Button>
                 <Button variant="outline" size="lg" asChild>
                   <a href={links.bridge} target="_blank" rel="noopener noreferrer">
-                    <Bridge className="mr-2 h-5 w-5" />
+                    <ArrowRightLeft className="mr-2 h-5 w-5" />
                     Bridge to Solana
                   </a>
                 </Button>
