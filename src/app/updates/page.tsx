@@ -8,14 +8,22 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { formatDate } from "@/lib/utils"
 import { links } from "@/lib/config"
-import { CalendarDays, Clock, ArrowRight, Zap } from "lucide-react"
+import { CalendarDays, Clock, ArrowRight, Zap, Instagram, Send, MessageCircle } from "lucide-react"
 
 // Mock data for now - in a real app this would come from MDX files or a CMS
 const updates = [
   {
+    slug: "solana-bridge-paused",
+    title: "Solana Bridge Paused",
+    date: "2025-11-01",
+    summary: "We've paused the Solana bridge to focus on our core network infrastructure. In the future, we will reintegrate the bridge through a service like Wormhole or other established bridge providers instead of a self-hosted solution to ensure better reliability and security.",
+    tags: ["bridge", "solana", "infrastructure"],
+    readTime: "3 min read",
+  },
+  {
     slug: "solana-bridge-live",
     title: "Solana Bridge Now Live",
-    date: "2024-08-15",
+    date: "2025-08-15",
     summary: "Mars Credit is now available on Solana! Trade MARS tokens with improved liquidity and access through our new bridge integration.",
     tags: ["bridge", "solana", "trading"],
     readTime: "3 min read",
@@ -23,23 +31,23 @@ const updates = [
   {
     slug: "macos-mining-app-released",
     title: "MacOS Mining App Released",
-    date: "2024-07-28",
+    date: "2025-07-28",
     summary: "Mining Mars Credit is now easier than ever with our native MacOS application. Download and start mining with just a few clicks.",
     tags: ["mining", "macos", "app"],
     readTime: "2 min read",
   },
   {
-    slug: "mainnet-milestone-2-5m-blocks",
-    title: "Mainnet Milestone: 2.5M+ Blocks Mined",
-    date: "2024-06-12",
-    summary: "The Mars Credit network has successfully mined over 2.5 million blocks, demonstrating the strength and reliability of our proof-of-work consensus.",
+    slug: "mainnet-milestone-3-3m-blocks",
+    title: "Mainnet Milestone: 3.3M+ Blocks Mined",
+    date: "2025-06-12",
+    summary: "The Mars Credit network has successfully mined over 3.3 million blocks, demonstrating the strength and reliability of our proof-of-work consensus.",
     tags: ["mainnet", "milestone", "pow"],
     readTime: "4 min read",
   },
   {
     slug: "grants-program-launched", 
     title: "Mars Credit Grants Program Launched",
-    date: "2024-05-20",
+    date: "2025-05-20",
     summary: "Supporting developers and innovators building on Mars Credit with our new grants program. Apply now to bring your Mars-focused projects to life.",
     tags: ["grants", "community", "development"],
     readTime: "5 min read",
@@ -59,6 +67,7 @@ const tagColors: Record<string, string> = {
   grants: "bg-emerald-500/20 text-emerald-300",
   community: "bg-pink-500/20 text-pink-300",
   development: "bg-indigo-500/20 text-indigo-300",
+  infrastructure: "bg-red-500/20 text-red-300",
 }
 
 function isNew(dateString: string): boolean {
@@ -74,7 +83,7 @@ export default function UpdatesPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 sm:py-32">
+      <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <motion.div
@@ -83,11 +92,8 @@ export default function UpdatesPage() {
               transition={{ duration: 0.8 }}
             >
               <Zap className="h-16 w-16 text-mars-400 mx-auto mb-6" />
-              <h1 className="text-4xl sm:text-6xl font-display font-bold text-text-hi mb-6 text-balance">
-                Mars Credit{" "}
-                <span className="text-transparent bg-gradient-to-r from-mars-400 to-mars-200 bg-clip-text">
-                  Updates
-                </span>
+              <h1 className="text-4xl sm:text-6xl font-display font-bold text-white mb-6 text-balance">
+                Mars Credit Updates
               </h1>
               <p className="text-xl text-text-med mb-8 max-w-2xl mx-auto text-balance">
                 Stay informed about the latest developments, milestones, and announcements 
@@ -217,8 +223,8 @@ export default function UpdatesPage() {
                   </a>
                 </Button>
                 <Button variant="ghost" size="lg" asChild>
-                  <a href={links.github} target="_blank" rel="noopener noreferrer">
-                    Watch on GitHub
+                  <a href={links.telegram} target="_blank" rel="noopener noreferrer">
+                    Follow on Telegram
                   </a>
                 </Button>
               </div>
@@ -230,21 +236,72 @@ export default function UpdatesPage() {
       {/* Footer */}
       <footer className="border-t border-white/5 py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <Image
-                src="/brand/marscredit_wide_transparent-p-500.png"
-                alt="Mars Credit"
-                width={120}
-                height={24}
-                className="h-6 w-auto"
-              />
-              <span className="text-xs bg-mars-500/20 text-mars-300 px-2 py-1 rounded-full">
-                Open Source
-              </span>
+          <div className="flex flex-col items-center space-y-6">
+            {/* Social Links */}
+            <div className="flex items-center space-x-4">
+              <a 
+                href="https://instagram.com/marscredit.xyz" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-text-lo hover:text-white transition-colors"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://x.com/marscredit" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-text-lo hover:text-white transition-colors"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
+              <a 
+                href="https://t.me/marscreditxyz" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-text-lo hover:text-white transition-colors"
+              >
+                <Send className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://t.me/MarscreditOfficial" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-text-lo hover:text-white transition-colors"
+              >
+                <MessageCircle className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://discord.gg/57bg77dCV8" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-text-lo hover:text-white transition-colors"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" />
+                </svg>
+              </a>
             </div>
-            <div className="text-sm text-text-lo">
-              Built for the Red Planet. Mineable. EVM-compatible.
+
+            {/* Logo and tagline */}
+            <div className="flex flex-col md:flex-row justify-between items-center w-full">
+              <div className="flex items-center space-x-3 mb-4 md:mb-0">
+                <Image
+                  src="/brand/marscredit_wide_transparent.png"
+                  alt="Mars Credit"
+                  width={120}
+                  height={24}
+                  className="h-6 w-auto brightness-200"
+                />
+                <span className="text-xs bg-mars-400/20 text-mars-400 px-2 py-1 rounded-full">
+                  Open Source
+                </span>
+              </div>
+              <div className="text-sm text-text-lo">
+                Built for the Red Planet. Mineable. EVM-compatible.
+              </div>
             </div>
           </div>
         </div>

@@ -7,25 +7,24 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { links } from "@/lib/config"
 import { cn } from "@/lib/utils"
-import { ExternalLink, Github, ArrowRightLeft, DollarSign } from "lucide-react"
+import { ExternalLink, Github, Pickaxe, X } from "lucide-react"
 
 const navigation = [
   { name: "Home", href: "/" },
   { name: "The Story", href: "/story" },
   { name: "Updates", href: "/updates" },
   { name: "Blockscan", href: links.blockscan, external: true },
-  { name: "Grants", href: links.grants, external: true },
-  { name: "Bridge", href: links.bridge, external: true },
 ]
 
 const actionButtons = [
-  { name: "Buy $MARS", href: links.trade, icon: DollarSign, variant: "outline" as const },
+  { name: "Mine Mars", href: "https://github.com/marscredit/go-marscredit", icon: Pickaxe, variant: "outline" as const },
   { name: "GitHub", href: links.github, icon: Github, variant: "ghost" as const },
 ]
 
 export function Navigation() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = React.useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -36,26 +35,29 @@ export function Navigation() {
   }, [])
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full border-b border-white/5 transition-all duration-200",
-        isScrolled 
-          ? "bg-background/80 backdrop-blur-xl shadow-lg shadow-mars-500/10" 
-          : "bg-background/50"
-      )}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center pt-6 px-4">
+      <div
+        className={cn(
+          "w-full max-w-5xl rounded-full border border-white/10 transition-all duration-300 shadow-2xl shadow-black/50",
+          isScrolled 
+            ? "bg-black/40 backdrop-blur-2xl" 
+            : "bg-black/30 backdrop-blur-2xl"
+        )}
+      >
+        <div className="flex h-14 items-center justify-between px-6">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center">
             <Image
-              src="/brand/marscredit_wide_transparent-p-500.png"
+              src="/brand/marscredit_square_transparent.png"
               alt="Mars Credit"
-              width={160}
+              width={32}
               height={32}
-              className="h-8 w-auto"
+              className="h-8 w-8"
               priority
             />
+            <span className="ml-2 text-white font-semibold text-sm tracking-tight hidden sm:inline">
+              Mars Credit
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -65,10 +67,10 @@ export function Navigation() {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-mars-400",
+                  "text-sm font-medium transition-colors hover:text-white",
                   pathname === item.href 
-                    ? "text-mars-400" 
-                    : "text-text-med"
+                    ? "text-white" 
+                    : "text-white/70"
                 )}
                 {...(item.external && { target: "_blank", rel: "noopener noreferrer" })}
               >
@@ -83,34 +85,88 @@ export function Navigation() {
             {actionButtons.map((button) => {
               const Icon = button.icon
               return (
-                <Button
+                <Link
                   key={button.name}
-                  variant={button.variant}
-                  size="sm"
-                  asChild
+                  href={button.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "inline-flex items-center text-sm font-medium transition-colors hover:text-white px-3 py-1.5 rounded-full",
+                    button.variant === "outline" 
+                      ? "bg-white/10 text-white hover:bg-white/20" 
+                      : "text-white/70"
+                  )}
                 >
-                  <Link 
-                    href={button.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center"
-                  >
-                    <Icon className="mr-2 h-4 w-4" />
-                    {button.name}
-                  </Link>
-                </Button>
+                  <Icon className="mr-1.5 h-4 w-4" />
+                  {button.name}
+                </Link>
               )
             })}
           </div>
 
-          {/* Mobile menu button - TODO: Implement mobile menu */}
-          <Button variant="ghost" size="icon" className="md:hidden">
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </Button>
+          {/* Mobile menu button */}
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden text-white"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu - Separate Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden w-full max-w-5xl mt-2 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-2xl shadow-2xl shadow-black/50 py-4 px-6">
+          <nav className="flex flex-col space-y-4">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-white",
+                  pathname === item.href 
+                    ? "text-white" 
+                    : "text-white/70"
+                )}
+                {...(item.external && { target: "_blank", rel: "noopener noreferrer" })}
+              >
+                {item.name}
+                {item.external && <ExternalLink className="ml-1 h-3 w-3 inline" />}
+              </Link>
+            ))}
+            <div className="pt-4 border-t border-white/10 flex flex-col space-y-2">
+              {actionButtons.map((button) => {
+                const Icon = button.icon
+                return (
+                  <Link
+                    key={button.name}
+                    href={button.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={cn(
+                      "inline-flex items-center justify-center text-sm font-medium transition-colors hover:text-white px-3 py-2 rounded-full",
+                      button.variant === "outline" 
+                        ? "bg-white/10 text-white hover:bg-white/20" 
+                        : "text-white/70"
+                    )}
+                  >
+                    <Icon className="mr-1.5 h-4 w-4" />
+                    {button.name}
+                  </Link>
+                )
+              })}
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   )
 }

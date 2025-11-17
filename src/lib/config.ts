@@ -23,6 +23,8 @@ export const links = {
   discord: "https://discord.gg/57bg77dCV8",
   twitter: "https://x.com/marscredit",
   telegram: "https://t.me/marscreditxyz",
+  telegramGroup: "https://t.me/MarscreditOfficial",
+  instagram: "https://instagram.com/marscredit.xyz",
   blockscan: "https://blockscan.marscredit.xyz/",
   bridge: "https://defi.marscredit.xyz/bridge",
   grants: "https://defi.marscredit.xyz/grants",

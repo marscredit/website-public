@@ -25,21 +25,16 @@ export function FeatureCard({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
-      whileHover={{ 
-        scale: 1.02, 
-        y: -4,
-        transition: { duration: 0.2 }
-      }}
       className={cn("group cursor-default", className)}
     >
-      <Card className="h-full p-6 transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-mars-500/20">
-        <div className="flex flex-col items-center text-center space-y-4">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-mars-500/20 to-mars-600/10 group-hover:from-mars-500/30 group-hover:to-mars-500/20 transition-all duration-300">
-            <Icon className="h-8 w-8 text-mars-500 group-hover:text-mars-300 transition-colors duration-300" />
+      <Card className="h-full p-6 transition-all duration-300">
+        <div className="flex flex-col items-center text-center space-y-4 relative z-10">
+          <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-black border border-mars-600 group-hover:border-mars-400 transition-all duration-300 shadow-[0_0_20px_rgba(204,0,0,0.2)]">
+            <Icon className="h-8 w-8 text-mars-400 group-hover:text-mars-300 transition-colors duration-300" />
           </div>
           
           <div className="space-y-2">
-            <h3 className="text-xl font-semibold text-text-hi group-hover:text-mars-300 transition-colors duration-300">
+            <h3 className="text-xl font-semibold text-white group-hover:text-mars-300 transition-colors duration-300">
               {title}
             </h3>
             <p className="text-text-med text-balance leading-relaxed">

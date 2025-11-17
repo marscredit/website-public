@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,15 +9,15 @@
   --panel: #121218;
   --muted: #1a1a22;
   
-  /* Mars reds - Brand Red #EA3323 */
-  --mars-950: #1a0404;
-  --mars-900: #2a0909;
-  --mars-800: #3b0e0e;
-  --mars-700: #611616;
-  --mars-600: #8b1d1d;
-  --mars-500: #EA3323;
-  --mars-400: #EA3323;
-  --mars-300: #f04d36;
+  /* Mars reds - Deeper Red */
+  --mars-950: #110000;
+  --mars-900: #220000;
+  --mars-800: #330000;
+  --mars-700: #550000;
+  --mars-600: #770000;
+  --mars-500: #990000;
+  --mars-400: #cc0000;
+  --mars-300: #ff4433;
   --mars-200: #f66849;
   --mars-100: #fcc2bb;
   
@@ -35,6 +35,12 @@
 @layer base {
   * {
     @apply border-gray-800;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
   
   body {
@@ -83,39 +89,42 @@
   
   /* Mars orb gradient */
   .mars-orb {
-    background: conic-gradient(from 220deg at 50% 50%, #EA3323, #f66849, #EA3323, #2a0909 75%, #121218 100%);
+    background: conic-gradient(from 220deg at 50% 50%, #cc0000, #ff4433, #cc0000, #220000 75%, #121218 100%);
     animation: orbit 20s linear infinite;
   }
   
-  /* Gradient cards */
+  /* Simple black cards */
   .card-glow {
-    @apply relative rounded-2xl ring-1 ring-white/5;
-    background: radial-gradient(120% 120% at 10% 10%, rgba(234,51,35,.25), transparent 60%), 
-                radial-gradient(120% 120% at 90% 90%, rgba(246,104,73,.2), transparent 55%), 
-                linear-gradient(180deg, #121218 0%, #0b0b0e 100%);
-    box-shadow: 0 0 80px -30px rgba(234,51,35,0.35);
+    @apply relative rounded-2xl;
+    background: #000000;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
   }
   
-  .card-glow::before {
-    content: "";
-    @apply pointer-events-none absolute -inset-px rounded-2xl;
-    background: linear-gradient(135deg, rgba(234,51,35,0.15) 0%, rgba(246,104,73,0.08) 100%);
+  .card-glow:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    border-color: rgba(255,255,255,0.2);
   }
   
   /* Button styles */
   .btn-mars {
-    @apply relative inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-white transition-all duration-200;
-    background: linear-gradient(135deg, #EA3323 0%, #8b1d1d 100%);
-    box-shadow: 0 4px 20px rgba(234,51,35,0.4);
+    @apply relative inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-white;
+    background: #cc0000;
+    border: none;
+    box-shadow: 0 4px 20px rgba(204,0,0,0.3);
+    transition: all 0.2s ease;
   }
   
   .btn-mars:hover {
-    @apply scale-105;
-    box-shadow: 0 8px 30px rgba(234,51,35,0.6);
+    background: #ff4433;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(204,0,0,0.4);
   }
   
   .btn-mars:active {
-    @apply scale-95;
+    transform: translateY(0);
   }
   
   /* Text balance for better typography */

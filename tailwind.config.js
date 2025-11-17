@@ -9,19 +9,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Mars-themed color palette - Brand Red #EA3323
+        // Mars-themed color palette - Deeper Red
         mars: {
           50: '#fef2f2',
           100: '#fcc2bb',
           200: '#f66849',
-          300: '#f04d36',
-          400: '#EA3323',
-          500: '#EA3323',
-          600: '#8b1d1d',
-          700: '#611616',
-          800: '#3b0e0e',
-          900: '#2a0909',
-          950: '#1a0404',
+          300: '#ff4433',
+          400: '#cc0000',
+          500: '#990000',
+          600: '#770000',
+          700: '#550000',
+          800: '#330000',
+          900: '#220000',
+          950: '#110000',
         },
         background: {
           DEFAULT: '#0b0b0e',
@@ -35,8 +35,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Sora', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['"Stack Sans Notch"', 'system-ui', 'sans-serif'],
+        display: ['"Stack Sans Notch"', 'system-ui', 'sans-serif'],
       },
       animation: {
         'twinkle': 'twinkle 8s linear infinite',
@@ -57,8 +57,8 @@ module.exports = {
         },
       },
       backgroundImage: {
-        'orbit': 'radial-gradient(120% 120% at 10% 10%, rgba(234,51,35,.25), transparent 60%), radial-gradient(120% 120% at 90% 90%, rgba(246,104,73,.2), transparent 55%), linear-gradient(180deg, #121218 0%, #0b0b0e 100%)',
-        'mars': 'conic-gradient(from 220deg at 50% 50%, #EA3323, #f66849, #EA3323, #2a0909 75%, #121218 100%)',
+        'orbit': 'linear-gradient(180deg, #1a1a22 0%, #121218 100%)',
+        'mars': 'conic-gradient(from 220deg at 50% 50%, #cc0000, #ff4433, #cc0000, #220000 75%, #121218 100%)',
       },
     },
   },

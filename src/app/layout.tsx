@@ -1,18 +1,7 @@
 import type { Metadata } from 'next'
-import { Inter, Sora } from 'next/font/google'
 import '@/styles/globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { site } from '@/lib/config'
-
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
-
-const sora = Sora({ 
-  subsets: ['latin'],
-  variable: '--font-sora',
-})
 
 export const metadata: Metadata = {
   title: {
@@ -77,7 +66,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${sora.variable} font-sans`}>
+      <body className="font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
