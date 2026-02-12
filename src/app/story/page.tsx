@@ -3,7 +3,6 @@
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Navigation } from "@/components/navigation"
-import { MarsOrb } from "@/components/mars-orb"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { links } from "@/lib/config"
@@ -14,7 +13,6 @@ import {
   Globe, 
   Shield,
   ArrowRight,
-  ExternalLink,
   MessageCircle,
   Instagram,
   Send
@@ -105,15 +103,6 @@ export default function StoryPage() {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="mx-auto max-w-4xl text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-8"
-            >
-              <MarsOrb size="lg" className="mx-auto mb-8" />
-            </motion.div>
-            
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -340,28 +329,16 @@ export default function StoryPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button size="lg" asChild>
-                  <a href={links.mining} target="_blank" rel="noopener noreferrer">
-                    <Rocket className="mr-2 h-5 w-5" />
-                    Start Mining
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href={links.discord} target="_blank" rel="noopener noreferrer">
-                    <Users className="mr-2 h-5 w-5" />
-                    Join Discord
-                  </a>
-                </Button>
                 <Button variant="outline" size="lg" asChild>
                   <a href={links.telegram} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="mr-2 h-5 w-5" />
                     Join Telegram
                   </a>
                 </Button>
-                <Button variant="ghost" size="lg" asChild>
+                <Button variant="outline" size="lg" asChild>
                   <a href="/updates">
+                    <ArrowRight className="mr-2 h-4 w-4" />
                     Latest Updates
-                    <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
               </div>

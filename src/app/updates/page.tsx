@@ -212,17 +212,12 @@ export default function UpdatesPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button size="lg" asChild>
-                  <a href={links.discord} target="_blank" rel="noopener noreferrer">
-                    Join Discord
-                  </a>
-                </Button>
                 <Button variant="outline" size="lg" asChild>
                   <a href={links.twitter} target="_blank" rel="noopener noreferrer">
                     Follow on X
                   </a>
                 </Button>
-                <Button variant="ghost" size="lg" asChild>
+                <Button variant="outline" size="lg" asChild>
                   <a href={links.telegram} target="_blank" rel="noopener noreferrer">
                     Follow on Telegram
                   </a>

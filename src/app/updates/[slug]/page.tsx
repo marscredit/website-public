@@ -1,12 +1,14 @@
 "use client"
 
 import Image from "next/image"
+import { use } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Navigation } from "@/components/navigation"
 import { Button } from "@/components/ui/button"
 import { formatDate } from "@/lib/utils"
+import { site } from "@/lib/config"
 import { CalendarDays, Clock, ArrowLeft, ExternalLink, Instagram, Send, MessageCircle } from "lucide-react"
 
 // Mock data - in a real app this would come from MDX files
@@ -199,16 +201,32 @@ interface UpdatePageProps {
   }>
 }
 
-export default async function UpdatePage({ params }: UpdatePageProps) {
-  const { slug } = await params
+export default function UpdatePage({ params }: UpdatePageProps) {
+  const { slug } = use(params)
   const update = updates[slug]
   
   if (!update) {
     notFound()
   }
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: update.title,
+    datePublished: update.date,
+    author: {
+      "@type": "Organization",
+      name: site.name,
+    },
+    url: `${site.url}/updates/${slug}`,
+  }
+
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <Navigation />
       
       {/* Header */}

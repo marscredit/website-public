@@ -64,9 +64,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.name,
+    url: site.url,
+    logo: `${site.url}/brand/marscredit_wide_transparent.png`,
+    sameAs: [
+      "https://x.com/marscredit",
+      "https://t.me/marscreditxyz",
+      "https://github.com/marscredit",
+    ],
+  }
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
