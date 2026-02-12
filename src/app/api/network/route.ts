@@ -8,7 +8,7 @@ export type NetworkStatus = {
 }
 
 async function jsonRpc<T>(method: string, params: any[] = []): Promise<{ result: T }> {
-  const rpc = process.env.MARS_RPC_PRIMARY || 'https://rpc.marscredit.org'
+  const rpc = process.env.MARS_RPC_PRIMARY || 'https://rpc.marscredit.xyz'
   
   const res = await fetch(rpc, {
     method: 'POST',
