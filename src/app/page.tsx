@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -7,6 +8,7 @@ import { Navigation } from "@/components/navigation"
 import { StatCard } from "@/components/stat-card"
 import { FeatureCard } from "@/components/feature-card"
 import { BoomerangVideo } from "@/components/boomerang-video"
+import { LiveBlockTicker } from "@/components/live-block-ticker"
 import { links } from "@/lib/config"
 import { 
   Zap, 
@@ -26,12 +28,19 @@ import {
   Send
 } from "lucide-react"
 
-const stats = [
-  { label: "Blocks Mined", value: "3.3M+", hint: "Proof-of-Work" },
+const FALLBACK_BLOCK = 3300000
+
+function formatBlocksMined(block: number): string {
+  const millions = block / 1_000_000
+  return `${millions >= 10 ? Math.floor(millions) : millions.toFixed(1)}M+`
+}
+
+const STATS_LABELS = [
+  { label: "Blocks Mined", hint: "Proof-of-Work" },
   { label: "Consensus", value: "PoW", hint: "Secure & Decentralized" },
   { label: "Compatibility", value: "EVM", hint: "Ethereum Tools" },
   { label: "Block Time", value: "Fast", hint: "Quick Confirmations" },
-]
+] as const
 
 const features = [
   {
@@ -57,6 +66,25 @@ const features = [
 ]
 
 export default function HomePage() {
+  const [block, setBlock] = useState<number | null>(null)
+
+  useEffect(() => {
+    fetch("/api/network")
+      .then((res) => res.json())
+      .then((data: { block?: number }) => {
+        if (typeof data?.block === "number") setBlock(data.block)
+      })
+      .catch(() => {})
+  }, [])
+
+  const blocksMinedValue = block !== null ? formatBlocksMined(block) : formatBlocksMined(FALLBACK_BLOCK)
+  const stats = [
+    { label: STATS_LABELS[0].label, value: blocksMinedValue, hint: STATS_LABELS[0].hint },
+    { label: STATS_LABELS[1].label, value: STATS_LABELS[1].value!, hint: STATS_LABELS[1].hint },
+    { label: STATS_LABELS[2].label, value: STATS_LABELS[2].value!, hint: STATS_LABELS[2].hint },
+    { label: STATS_LABELS[3].label, value: STATS_LABELS[3].value!, hint: STATS_LABELS[3].hint },
+  ]
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -309,6 +337,10 @@ export default function HomePage() {
       <footer className="border-t border-white/5 py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center space-y-6">
+            {/* Live block ticker */}
+            <div className="w-full max-w-sm">
+              <LiveBlockTicker initialBlock={block ?? FALLBACK_BLOCK} />
+            </div>
             {/* Social Links */}
             <div className="flex items-center space-x-4">
               <a 

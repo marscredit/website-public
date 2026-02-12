@@ -42,6 +42,8 @@ module.exports = {
         'twinkle': 'twinkle 8s linear infinite',
         'orbit': 'orbit 20s linear infinite',
         'float': 'float 6s ease-in-out infinite',
+        'scan-line': 'scan-line 3s linear infinite',
+        'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
       },
       keyframes: {
         twinkle: {
@@ -54,6 +56,14 @@ module.exports = {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        'scan-line': {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100%)' },
+        },
+        'glow-pulse': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.85' },
         },
       },
       backgroundImage: {
