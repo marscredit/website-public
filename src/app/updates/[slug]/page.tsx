@@ -19,6 +19,135 @@ const updates: Record<string, {
   tags: string[]
   content: React.ReactNode
 }> = {
+  "mining-on-apple-silicon-2026": {
+    title: "Mining Cryptocurrency on Apple Silicon in 2026: A Complete Guide",
+    date: "2026-06-16",
+    readTime: "9 min read",
+    tags: ["mining", "macos", "apple-silicon", "guide"],
+    content: (
+      <div className="prose prose-lg max-w-none prose-invert">
+        <p className="text-xl text-text-med leading-relaxed">
+          For a decade, mining cryptocurrency on a laptop has been treated as a joke. The conventional wisdom: if you don't own a dedicated GPU rig or an ASIC, don't bother. That wisdom was largely right.
+        </p>
+        <p className="text-text-med leading-relaxed">
+          It's also out of date.
+        </p>
+        <p className="text-text-med leading-relaxed">
+          In 2026, mining a real, working Layer 1 cryptocurrency on an Apple Silicon MacBook isn't a meme. It's a viable on-ramp into proof-of-work mining for people who never considered themselves miners. The chip in your M-series MacBook is fast enough, the algorithms are efficient enough, and at least one cryptocurrency — Mars Credit (MARS) — ships a native macOS mining app that does the work for you.
+        </p>
+
+        <h2 className="text-2xl font-bold text-text-hi mt-8 mb-4">Why mining on a MacBook works now</h2>
+        <p className="text-text-med leading-relaxed">Three things have changed since the "you need a GPU" era.</p>
+        <ul className="text-text-med space-y-2">
+          <li>• <strong>Unified memory architecture.</strong> M1, M2, M3, and M4 chips share memory between CPU and GPU. Ethash and similar memory-hard proof-of-work algorithms care about memory bandwidth more than raw compute. Apple Silicon's unified memory delivers bandwidth (200-800 GB/s on Pro/Max chips) that would have been datacenter-class a decade ago.</li>
+          <li>• <strong>Metal acceleration.</strong> Native macOS miners now use Metal — Apple's GPU compute framework — instead of CUDA. No Wine, no Boot Camp, no nonsense. The miner is a native Mac app.</li>
+          <li>• <strong>Idle laptop cycles are free electricity.</strong> Mining on a MacBook plugged in at your desk while you work consumes electricity you're already paying for. Marginal cost is rounding error.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-text-hi mt-8 mb-4">What you can mine on Apple Silicon</h2>
+        <p className="text-text-med leading-relaxed">The honest list is short. Most cryptocurrencies still require an NVIDIA GPU, an ASIC, or both. The exceptions are:</p>
+        <ul className="text-text-med space-y-2">
+          <li>• <strong>Monero (XMR)</strong> — RandomX, CPU-mineable, runs fine on Apple Silicon but profitability is low without a serious thread count</li>
+          <li>• <strong>Mars Credit (MARS)</strong> — Ethash, ships a native Apple Silicon miner, the focus of this guide</li>
+          <li>• <strong>A handful of niche CPU coins</strong> — most are abandoned or low-quality</li>
+        </ul>
+        <p className="text-text-med leading-relaxed">
+          This guide focuses on Mars Credit because it has the cleanest setup, a working Apple Silicon miner, and is the only mineable Layer 1 in 2026 with a first-class macOS experience.
+        </p>
+
+        <h2 className="text-2xl font-bold text-text-hi mt-8 mb-4">What Mars Credit is</h2>
+        <ul className="text-text-med space-y-2">
+          <li>• Algorithm: Ethash (the algorithm Ethereum used pre-Merge)</li>
+          <li>• Codebase: go-ethereum v1.10.18 fork, London hard fork</li>
+          <li>• Block time: ~13 seconds</li>
+          <li>• EVM-compatible: Yes (Chain ID 110110)</li>
+          <li>• Launch: Fair launch, no premine, no ICO</li>
+          <li>• Block height (mid-2026): 4.2 million+</li>
+          <li>• Time on mainnet: ~18 months</li>
+        </ul>
+        <p className="text-text-med leading-relaxed">
+          In plain English: it's a working blockchain that runs the same kind of code Ethereum did before The Merge, but as a separate independent chain. You can deploy Ethereum smart contracts to it. You can use MetaMask with it. And — relevant to this guide — you can mine it on a MacBook.
+        </p>
+
+        <h2 className="text-2xl font-bold text-text-hi mt-8 mb-4">How to mine MARS on your Mac in 4 steps</h2>
+        <h3 className="text-xl font-semibold text-text-hi mt-6 mb-3">Step 1: Get a wallet address</h3>
+        <p className="text-text-med leading-relaxed">
+          Install MetaMask, Zerion, or any Ethereum-compatible wallet. Create a new wallet. Save your seed phrase somewhere safe (this is non-negotiable — if you lose the seed, you lose any MARS you mine). Copy your wallet's public address — it'll start with <code>0x</code> and be 42 characters long.
+        </p>
+        <h3 className="text-xl font-semibold text-text-hi mt-6 mb-3">Step 2: Download the Mars miner app</h3>
+        <p className="text-text-med leading-relaxed">
+          Go to <a href="https://marscredit.xyz" className="text-mars-400 hover:text-mars-300">marscredit.xyz</a>. The homepage has direct downloads for macOS (Apple Silicon), macOS (Intel), and Windows.
+        </p>
+        <h3 className="text-xl font-semibold text-text-hi mt-6 mb-3">Step 3: Open the app, paste your wallet, start</h3>
+        <p className="text-text-med leading-relaxed">
+          On first launch, right-click and choose "Open" (standard for indie Mac apps that aren't notarized through the App Store). Approve the dialog. Paste your wallet address. Click start. You're mining.
+        </p>
+        <h3 className="text-xl font-semibold text-text-hi mt-6 mb-3">Step 4: Monitor your hashrate and rewards</h3>
+        <p className="text-text-med leading-relaxed">
+          The app shows your current hashrate. Check your wallet balance and incoming MARS payouts on the block explorer — paste your wallet address into the search bar.
+        </p>
+
+        <h2 className="text-2xl font-bold text-text-hi mt-8 mb-4">What hashrate to expect</h2>
+        <ul className="text-text-med space-y-2">
+          <li>• <strong>M1 / M2 (base):</strong> Low single-digit MH/s</li>
+          <li>• <strong>M1 Pro / M2 Pro:</strong> Mid single-digit MH/s</li>
+          <li>• <strong>M1 Max / M2 Max / M3 Max:</strong> 10-20+ MH/s</li>
+          <li>• <strong>M3 Ultra:</strong> 25-40+ MH/s</li>
+        </ul>
+        <p className="text-text-med leading-relaxed">
+          For context: a single high-end NVIDIA RTX 4090 runs Ethash at roughly 120 MH/s. So a top-tier Mac is roughly 1/6th to 1/4 the hashrate of a dedicated GPU. That sounds bad. It's not — your MacBook was already running, and network difficulty is still low on a small-cap chain. A few hundred Mac miners can find a meaningful share of blocks.
+        </p>
+
+        <h2 className="text-2xl font-bold text-text-hi mt-8 mb-4">How much MARS will you earn?</h2>
+        <p className="text-text-med leading-relaxed">Honest answer: not a lot.</p>
+        <ul className="text-text-med space-y-2">
+          <li>• <strong>M1/M2 base:</strong> A few MARS per day</li>
+          <li>• <strong>M1 Pro / M2 Pro:</strong> Tens of MARS per day</li>
+          <li>• <strong>M1 Max / M3 Max:</strong> Possibly 100+ MARS per day during low-difficulty periods</li>
+        </ul>
+        <p className="text-text-med leading-relaxed">
+          You're not mining to pay rent. You're mining the early phase of a fair-launch chain on a device you already own, accumulating a position in case the project grows. The miners who made fortunes on Bitcoin in 2010 weren't running calculators showing they'd be rich — they were running laptops to see what happens.
+        </p>
+
+        <h2 className="text-2xl font-bold text-text-hi mt-8 mb-4">Will my MacBook overheat?</h2>
+        <p className="text-text-med leading-relaxed">
+          Probably not, if you're using the official Mars Credit Apple Silicon miner. The app is built with Apple Silicon's thermal profile in mind. Keep your MacBook plugged in, on a hard flat surface, with vents unobstructed. If you have a MacBook Air (fanless), expect some thermal throttling.
+        </p>
+
+        <h2 className="text-2xl font-bold text-text-hi mt-8 mb-4">When does this stop working?</h2>
+        <p className="text-text-med leading-relaxed">
+          As more miners join, difficulty adjusts upward. Eventually GPU miners will dominate and laptop mining will become uneconomical. That window is real, and finite. The Bitcoin parallel is instructive — CPU-mineable on laptops from 2009 to 2010, then GPUs, then ASICs. The miners who got in during the laptop era of Bitcoin — and held — did well.
+        </p>
+        <p className="text-text-med leading-relaxed">
+          We're not predicting Mars Credit will be Bitcoin. But the structure — fair launch, low difficulty, accessible mining — is the same window. It closes at some point.
+        </p>
+
+        <div className="bg-mars-950/50 border border-mars-500/20 rounded-lg p-6 my-8">
+          <h3 className="text-lg font-semibold text-mars-300 mb-2">Honest risks</h3>
+          <ul className="text-text-med text-sm space-y-2">
+            <li>• The MARS price could go to zero. Mine with the expectation your bag might be worth nothing.</li>
+            <li>• Exchange liquidity is thin (LA Token only). Plan to hold what you mine.</li>
+            <li>• The project is small. The team is small. This is a fair-launch experiment, not a VC-backed enterprise.</li>
+          </ul>
+        </div>
+
+        <h2 className="text-2xl font-bold text-text-hi mt-8 mb-4">FAQ</h2>
+        <p className="text-text-med leading-relaxed"><strong>Is this legal?</strong> Yes. Proof-of-work mining is explicitly classified as non-securities activity by the SEC (Corporation Finance Statement, March 2025).</p>
+        <p className="text-text-med leading-relaxed"><strong>Do I need to KYC?</strong> No. You generate a wallet, mine into it, and the chain doesn't know who you are.</p>
+        <p className="text-text-med leading-relaxed"><strong>Can I mine on a PC and a Mac simultaneously?</strong> Yes. Point both at the same wallet address.</p>
+        <p className="text-text-med leading-relaxed"><strong>Is the source code open?</strong> Yes — <a href="https://github.com/marscredit" className="text-mars-400 hover:text-mars-300">github.com/marscredit</a>.</p>
+        <p className="text-text-med leading-relaxed"><strong>Where do I get help?</strong> Discord (discord.gg/57bg77dCV8) and Telegram (t.me/marscreditxyz).</p>
+
+        <h2 className="text-2xl font-bold text-text-hi mt-8 mb-4">Conclusion</h2>
+        <p className="text-text-med leading-relaxed">
+          Mining cryptocurrency on a MacBook in 2026 isn't a get-rich-quick scheme. It's a low-stakes way to participate in the early phase of a fair-launch proof-of-work chain using hardware you already own. If the worst case is "I learned how mining works and gained a small position in an experimental altcoin," the upside math gets interesting at very modest assumptions about whether the project grows.
+        </p>
+        <p className="text-text-med leading-relaxed">
+          The download is at <a href="https://marscredit.xyz" className="text-mars-400 hover:text-mars-300">marscredit.xyz</a>. Setup takes 5 minutes. Difficulty is still low. The window is open.
+        </p>
+      </div>
+    )
+  },
   "solana-bridge-paused": {
     title: "Solana Bridge Paused",
     date: "2025-11-01",
@@ -186,6 +315,8 @@ const tagColors: Record<string, string> = {
   mining: "bg-mars-500/20 text-mars-300",
   macos: "bg-gray-500/20 text-gray-300",
   app: "bg-cyan-500/20 text-cyan-300",
+  "apple-silicon": "bg-slate-500/20 text-slate-200",
+  guide: "bg-teal-500/20 text-teal-300",
   infrastructure: "bg-red-500/20 text-red-300",
   mainnet: "bg-mars-400/20 text-mars-200",
   milestone: "bg-yellow-500/20 text-yellow-300",

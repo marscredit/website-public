@@ -13,6 +13,14 @@ import { CalendarDays, Clock, ArrowRight, Zap, Instagram, Send, MessageCircle } 
 // Mock data for now - in a real app this would come from MDX files or a CMS
 const updates = [
   {
+    slug: "mining-on-apple-silicon-2026",
+    title: "Mining Cryptocurrency on Apple Silicon in 2026: A Complete Guide",
+    date: "2026-06-16",
+    summary: "A practical, honest guide to mining a real Layer 1 proof-of-work cryptocurrency on an M-series MacBook. Why unified memory and Metal acceleration changed the math, what hashrate to expect from M1 through M3 Ultra, realistic earnings, and how to set up the native Mars Credit Apple Silicon miner in four steps.",
+    tags: ["mining", "macos", "apple-silicon", "guide"],
+    readTime: "9 min read",
+  },
+  {
     slug: "solana-bridge-paused",
     title: "Solana Bridge Paused",
     date: "2025-11-01",
@@ -61,6 +69,8 @@ const tagColors: Record<string, string> = {
   mining: "bg-mars-500/20 text-mars-300",
   macos: "bg-gray-500/20 text-gray-300",
   app: "bg-cyan-500/20 text-cyan-300",
+  "apple-silicon": "bg-slate-500/20 text-slate-200",
+  guide: "bg-teal-500/20 text-teal-300",
   mainnet: "bg-mars-400/20 text-mars-200",
   milestone: "bg-yellow-500/20 text-yellow-300",
   pow: "bg-orange-500/20 text-orange-300",
