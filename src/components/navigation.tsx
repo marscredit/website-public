@@ -12,12 +12,13 @@ import { ExternalLink, Github, Pickaxe, X } from "lucide-react"
 const navigation = [
   { name: "Home", href: "/" },
   { name: "The Story", href: "/story" },
+  { name: "Tokenomics", href: "/tokenomics" },
   { name: "Updates", href: "/updates" },
   { name: "Blockscan", href: links.blockscan, external: true },
 ]
 
 const actionButtons = [
-  { name: "Mine Mars", href: "https://github.com/marscredit/go-marscredit", icon: Pickaxe, variant: "outline" as const },
+  { name: "Mine Mars", href: links.mining, icon: Pickaxe, variant: "outline" as const },
   { name: "GitHub", href: links.github, icon: Github, variant: "ghost" as const },
 ]
 
