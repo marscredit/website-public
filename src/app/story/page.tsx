@@ -50,9 +50,9 @@ const timeline = [
   {
     phase: "Community",
     title: "Grants Program",
-    description: "Supporting builders and innovators who share our vision of interplanetary commerce and settlement.",
+    description: "Supporting builders and innovators who share our vision of interplanetary commerce and settlement. Currently paused.",
     icon: Users,
-    status: "active"
+    status: "paused"
   },
   {
     phase: "Future",
@@ -212,6 +212,11 @@ export default function StoryPage() {
                           {milestone.status === 'active' && (
                             <span className="text-xs bg-mars-400/30 text-mars-200 px-2 py-1 rounded-full animate-pulse">
                               ⚡ Active
+                            </span>
+                          )}
+                          {milestone.status === 'paused' && (
+                            <span className="text-xs bg-panel text-text-lo px-2 py-1 rounded-full">
+                              ⏸ Paused
                             </span>
                           )}
                         </div>
